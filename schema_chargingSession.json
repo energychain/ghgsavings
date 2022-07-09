@@ -1,0 +1,276 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "https://integration.corrently.io/static/idideal/assets/js/schema_chargingSession.json",
+    "type": "object",
+    "default": {},
+    "title": "EV-Charging Session for GHG savings claim",
+    "required": [
+        "chargePointOperator",
+        "chargePoint",
+        "foreignTxId",
+        "idTag",
+        "period",
+        "metering",
+        "ghg"
+    ],
+    "properties": {
+        "iat": {
+            "type": "integer",
+            "default": 0,
+            "title": "The iat Schema",
+            "examples": [
+                1657325985
+            ]
+        },
+        "chargePointOperator": {
+            "type": "string",
+            "default": "",
+            "title": "Operator ID of ChargePoint",
+            "examples": [
+                "0x8139979A6e9Ba88F861c20345317cca421ff5110"
+            ]
+        },
+        "chargePoint": {
+            "type": "string",
+            "default": "",
+            "title": "Unique ID of ChargingPoint and Connector",
+            "examples": [
+                "GE*63693*CP*0*KW*22"
+            ]
+        },
+        "foreignTxId": {
+            "type": "string",
+            "default": "",
+            "title": "Foreign/Original TransactionId of provider",
+            "examples": [
+                ""
+            ]
+        },
+        "idTag": {
+            "type": "string",
+            "default": "",
+            "title": "idTag (user) of Charging Session if given by OCPP central servcice (or manual if not)",
+            "examples": [
+                "manual"
+            ]
+        },
+        "period": {
+            "type": "object",
+            "default": {},
+            "title": "Timeperiod of charging session",
+            "required": [
+                "start",
+                "stop"
+            ],
+            "properties": {
+                "start": {
+                    "type": "number",
+                    "default": "",
+                    "title": "Start of session",
+                    "examples": [
+                        1657325940000
+                    ]
+                },
+                "stop": {
+                    "type": "number",
+                    "default": "",
+                    "title": "End of session",
+                    "examples": [
+                        1657325940000
+                    ]
+                }
+            },
+            "examples": [{
+                "start": 1657325940000,
+                "stop": 1657325940000
+            }]
+        },
+        "metering": {
+            "type": "object",
+            "default": {},
+            "title": "The metering Schema",
+            "required": [
+                "meterStart",
+                "meterStop",
+                "energy"
+            ],
+            "properties": {
+                "meterStart": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The meterStart Schema",
+                    "examples": [
+                        "0"
+                    ]
+                },
+                "meterStop": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The meterStop Schema",
+                    "examples": [
+                        "120"
+                    ]
+                },
+                "energy": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The energy Schema",
+                    "examples": [
+                        "120"
+                    ]
+                }
+            },
+            "examples": [{
+                "meterStart": "0",
+                "meterStop": "120",
+                "energy": "120"
+            }]
+        },
+        "ghg": {
+            "type": "object",
+            "default": {},
+            "title": "The ghg Schema",
+            "required": [
+                "emission",
+                "saving",
+                "sync"
+            ],
+            "properties": {
+                "emission": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The emission Schema",
+                    "required": [
+                        "value",
+                        "factor"
+                    ],
+                    "properties": {
+                        "value": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The value Schema",
+                            "examples": [
+                                "4"
+                            ]
+                        },
+                        "factor": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The factor Schema",
+                            "examples": [
+                                "0.035"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "value": "4",
+                        "factor": "0.035"
+                    }]
+                },
+                "saving": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The saving Schema",
+                    "required": [
+                        "value",
+                        "factor"
+                    ],
+                    "properties": {
+                        "value": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The value Schema",
+                            "examples": [
+                                "52"
+                            ]
+                        },
+                        "factor": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The factor Schema",
+                            "examples": [
+                                "0.431"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "value": "52",
+                        "factor": "0.431"
+                    }]
+                },
+                "sync": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The sync Schema",
+                    "required": [
+                        "value"
+                    ],
+                    "properties": {
+                        "value": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The value Schema",
+                            "examples": [
+                                "60.245"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "value": "60.245"
+                    }]
+                }
+            },
+            "examples": [{
+                "emission": {
+                    "value": "4",
+                    "factor": "0.035"
+                },
+                "saving": {
+                    "value": "52",
+                    "factor": "0.431"
+                },
+                "sync": {
+                    "value": "60.245"
+                }
+            }]
+        },
+        "iss": {
+            "type": "string",
+            "default": "",
+            "title": "The iss Schema",
+            "examples": [
+                "did:ethr:6226:0xe04911d89a7CBEE72FB74cDd4b47dbaC8E4c944D"
+            ]
+        }
+    },
+    "examples": [{
+        "iat": 1657325985,
+        "chargePointOperator": "0x8139979A6e9Ba88F861c20345317cca421ff5110",
+        "chargePoint": "GE*63693*CP*0*KW*22",
+        "foreignTxId": "",
+        "idTag": "manual",
+        "period": {
+            "start": "1657325940000",
+            "stop": "1657325940000"
+        },
+        "metering": {
+            "meterStart": "0",
+            "meterStop": "120",
+            "energy": "120"
+        },
+        "ghg": {
+            "emission": {
+                "value": "4",
+                "factor": "0.035"
+            },
+            "saving": {
+                "value": "52",
+                "factor": "0.431"
+            },
+            "sync": {
+                "value": "60.245"
+            }
+        },
+        "iss": "did:ethr:6226:0xe04911d89a7CBEE72FB74cDd4b47dbaC8E4c944D"
+    }]
+}
